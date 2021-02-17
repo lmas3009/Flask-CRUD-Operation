@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD-Flask</title>
+
+
+    <style>
+        .heading{
+            text-align: center;
+        }
+        .form{
+            display: grid;
+            place-items: center;
+        }
+        .form input{
+            margin-right: 30px;
+        }
+        .form select{
+            margin-right: 30px;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        .update{
+            height: 30px;
+            width: 60px;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .delete{
+            height: 30px;
+            width: 60px;
+            background-color: red;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .table{
+            overflow: scroll;
+            overflow-x: hidden;
+            max-height: 80vh;
+        }
+        .btn{
+            display: flex;
+            flex-direction: row;
+        }
+        .btn button{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="heading">
+        <h2>Welcome to the Tutorial of Flask CRUD Operations</h2>
+    </div>
+    <hr>
+    <div class="form">
+        <form action="{{ url_for('userdetails')}}" method="post">
+            <label>Name</label>
+            <input type="text" name="uname">
+            <label>Email Id</label>
+            <input type="email" name="email">
+            <label>Gender</label>
+            <select name="gender">
+                <option disabled selected value="select">Select</option>
+                <option value="male">Male</option>
+                <option value="male">Female</option>
+            </select>
+            <label>Age</label>
+            <input type="number" name="age">
+            <label>College Name</label>
+            <input type="text" name="clgname">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <hr>
+    <div class="table">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email Id</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>College Name</th>
+                <th>Operations</th>
+            </tr>
+
+            
+            {% if data==null %}
+                <tr>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                </tr>
+            {% else %}
+            {% for i in range(len) %}
+                <tr>
+                    <td>{{data[i][1]}}</td>
+                    <td>{{data[i][2]}}</td>
+                    <td>{{data[i][3]}}</td>
+                    <td>{{data[i][4]}}</td>
+                    <td>{{data[i][5]}}</td>
+                    <td class="btn">
+                        <a href='/update/{{data[i][0]}}'><button class="update">Update</button></a>
+                        <a href='/delete/{{data[i][0]}}'><button class="delete">Delete</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            {% endif %}
+            </tr>
+        </table>
+        
+    </div>
+</body>
+</html>

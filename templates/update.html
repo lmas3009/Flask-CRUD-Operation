@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD-Flask</title>
+    <link rel="stylesheet" href="static/index.css">
+
+    <style>
+        .heading{
+            text-align: center;
+        }
+        .form{
+            display: grid;
+            place-items: center;
+        }
+        .form input{
+            margin-right: 30px;
+        }
+        .form select{
+            margin-right: 30px;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        .update{
+            height: 30px;
+            width: 60px;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .delete{
+            height: 30px;
+            width: 60px;
+            background-color: red;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .table{
+            overflow: scroll;
+            overflow-x: hidden;
+            max-height: 80vh;
+        }
+        .btn{
+            display: flex;
+            flex-direction: row;
+        }
+        .btn button{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="heading">
+        <h2>Welcome to the Tutorial of Flask CRUD Operations</h2>
+    </div>
+    <hr>
+    <div class="form">
+        <form action=" /Update/{{data[0]}}" method="post">
+            <label>Name</label>
+            <input type="text" name="uname" value="{{data[1]}}">
+            <label>Email Id</label>
+            <input type="email" name="email" value="{{data[2]}}">
+            <label>Gender</label>
+            <input type="text" disabled name="Gender" value="{{data[3]}}">
+            <label>Age</label>
+            <input type="number" name="age" value="{{data[4]}}">
+            <label>College Name</label>
+            <input type="text" name="clgname" value="{{data[5]}}">
+            <input type="submit" value="Update">
+        </form>
+    </div>
+</body>
+</html>
